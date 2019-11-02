@@ -1,5 +1,5 @@
 #include <iostream>
-#include <set>
+#include <map>
 #include <vector>
 
 using namespace std;
@@ -10,9 +10,19 @@ int main() {
   cin >> numQueries;
   while(numQueries--) {
 
+    // k, d, n
     int scheduleLength, numShows, length;
     cin >> scheduleLength >> numShows >> length;
 
+    /**
+     * EDGE: d = n
+     */
+    if(scheduleLength == length) {
+      cout << numShows;
+      continue;
+    }
+
+    // Populate vector
     vector<int> schedule(scheduleLength);
     for(int i = 0; i < scheduleLength; ++i) {
       int show;
@@ -20,18 +30,13 @@ int main() {
       schedule[i] = show;
     }
 
-    int smallestSetLength = -1;
+    auto iter1 = schedule.begin();
+    auto iter2 = iter1 + length;
+    map<int, int> counts;
+
     for(int i = 0; i < scheduleLength - length + 1; ++i) {
-      set<int> shows;
-      for(int j = 0; j < length; ++j) {
-        shows.insert(schedule[i + j]);
-      }
-      if(shows.size() < smallestSetLength || smallestSetLength == -1)
-        smallestSetLength = shows.size();
-      if(smallestSetLength == 1)
-        break;
+
     }
-    cout << smallestSetLength << '\n';
 
   }
 
