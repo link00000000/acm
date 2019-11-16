@@ -10,13 +10,11 @@ bool coprime (int a, int b)
 
 int main()
 {
-    int numQueries;
-    cin >> numQueries;
-    while(numQueries--)
+    while(true)
     {
         int a, b;
         cin >> a >> b;
 
-        cout << ((coprime(a, b) && a != b) || a == 1 || b == 1 ? "Finite" : "Infinite") << endl;
+        cout << (coprime(a, b) ? "Finite" : "Infinite") << endl;
     }
 }
